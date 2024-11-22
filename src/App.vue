@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MonComposant />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import MonComposant from './components/MonComposant.vue'
+
+// export default {
+//   name: 'App',
+//   components: {
+//     HelloWorld
+//   }
+// }
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    MonComposant
   }
 }
+
+
 </script>
 
 <style>
