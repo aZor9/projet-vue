@@ -1,27 +1,24 @@
-import Vue from 'vue'
-import App from './App.vue'
-import VueRouter from 'vue-router'; // Import VueRouter
-import { createMemoryHistory, createRouter } from 'vue-router'
-import TextImageComponent from './components/TextImageComponent.vue'
-import Contact from './components/Contact.vue';
+import Vue from 'vue';
+import App from './App.vue';
+import VueRouter from 'vue-router'; // Utilisation de VueRouter pour Vue 2
+import TextImageComponent from './components/TextImageComponent.vue';
+import ContactComponent from './components/ContactComponent.vue';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.use(VueRouter); // Use VueRouter
-
-new Vue({
-  render: h => h(App),
-  router,
-}).$mount('#app')
-
-
+Vue.use(VueRouter); // Active VueRouter
 
 const routes = [
   { path: '/', component: TextImageComponent },
-  { path: '/contact', component: Contact },
-]
+  { path: '/contact', component: ContactComponent },
+];
 
-const router = createRouter({
-  history: createMemoryHistory(),
+const router = new VueRouter({
+  mode: 'history', // Supprime le "#" de l'URL
   routes,
-})
+});
+
+new Vue({
+  render: h => h(App),
+  router, // Injecte le routeur dans Vue
+}).$mount('#app');
