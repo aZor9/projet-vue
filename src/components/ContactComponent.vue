@@ -1,7 +1,8 @@
 <template>
   <div id="contact-page">
+    <h1>contact</h1>
     <!-- <NavigationComponent /> -->
-    <TextImageComponent />
+    <!-- <TextImageComponent /> -->
     <!-- <MonComposant /> -->
   </div>
 </template>
@@ -9,15 +10,15 @@
 <script>
 // import MonComposant from './MonComposant.vue';
 // import NavigationComponent from './NavigationComponent.vue';
-import TextImageComponent from './TextImageComponent.vue';
+// import TextImageComponent from './TextImageComponent.vue';
 
 export default {
   name: 'ContactComponent',
-  components: {
+  // components: {
     // MonComposant,
     // NavigationComponent,
-    TextImageComponent,
-  },
+    // TextImageComponent,
+  // },
 };
 </script>
 

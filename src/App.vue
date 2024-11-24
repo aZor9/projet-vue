@@ -1,43 +1,53 @@
 <template>
   <div id="app">
-    <p>
+    <!-- <p>
       <strong>Current route path:</strong> {{ $route.fullPath }}
-    </p>
-    <nav>
-      <!-- Utilisation correcte des balises pour Vue 2 -->
-      <router-link to="/">Go to Home</router-link>
-      <router-link to="/contact">Go to About</router-link>
+    </p> -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <router-link to="/"  class="nav-link" aria-current="page">{{ Texte1 }}</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/contact"  class="nav-link" aria-current="page">{{ Texte2 }}</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">{{ Texte3 }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <main>
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </main>
   </div>
 </template>
 
+
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import MonComposant from './components/MonComposant.vue'
-// import NavigationComponent from './components/NavigationComponent.vue';
-// import TextImageComponent from './components/TextImageComponent.vue';
-
-// export default {
-//   name: 'App',
-//   components: {
-//     HelloWorld
-//   }
-// }
-
-// export default {
-//   components: {
-//     MonComposant,
-//     NavigationComponent,
-//     TextImageComponent 
-//   },
-// }
-
-
+export default {
+    data() {
+        return {
+            Texte1: 'Accueil',
+            Texte2: 'Contact',
+            Texte3: 'API'
+        };
+    }
+};
 </script>
+
 
 <style>
 #app {
@@ -46,6 +56,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /* margin-top: 60px; */
 }
 </style>
