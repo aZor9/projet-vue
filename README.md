@@ -33,8 +33,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # Arborescence : 
 
+```mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+    V.Accueil-->C.Nav;
+    V.Accueil-->C.Text&Image;
+    V.Contact-->C.Nav;
+    V.Contact-->C.Form;
+    V.API-->C.Nav;
+    V.API-->C.FormAPI;
+```
