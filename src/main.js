@@ -1,16 +1,20 @@
 import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router'; // Utilisation de VueRouter pour Vue 2
-import TextImageComponent from './components/TextImageComponent.vue';
-import ContactComponent from './components/ContactComponent.vue';
+import HomePage from './views/HomePage.vue';
+import ContactPage from './views/ContactPage.vue';
+import ApiPage from './views/ApiPage.vue';
+import OtherPage from './views/OtherPage.vue';
 
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter); // Active VueRouter
 
 const routes = [
-  { path: '/', component: TextImageComponent },
-  { path: '/contact', component: ContactComponent },
+  { path: '/', component: HomePage },
+  { path: '/contact', component: ContactPage },
+  { path: '/api', component: ApiPage },
+  { path: '/other', component: OtherPage },
 ];
 
 const router = new VueRouter({
