@@ -6,7 +6,7 @@
       
     <div>
       <NavigationComponent />
-     </div>
+    </div>
   
     <div>
       <main>

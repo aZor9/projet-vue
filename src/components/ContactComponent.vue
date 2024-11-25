@@ -20,8 +20,8 @@
       <textarea v-model="message" type="text" class="form-control shadow-sm" placeholder="Votre Message"></textarea>
     </div>
 
-    <form>
-      <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Envoyer</button>
+    <form @submit.prevent="envoyerDonnees">
+        <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Envoyer</button>
     </form>
   </div>
 
@@ -42,9 +42,50 @@ export default {
   name: 'ContactComponent',
   data() {
     return {
-      nom : "",
-      mail : "",
-      message : ""
+      nom: "",
+      mail: "",
+      message: ""
+    };
+  },
+  methods: {
+    async envoyerDonnees() {
+      // Construire le contenu à envoyer au webhook Discord
+      const payload = {
+        content: `**Nouveau message reçu :**\n\n**Nom :** ${this.nom}\n**E-mail :** ${this.mail}\n**Message :**\n${this.message}`
+      };
+
+      try {
+        // Remplacer par ton URL de webhook Discord
+        const webhookUrl = "https://discord.com/api/webhooks/1309485318969495572/IHGFgyq3BCa0c4heSp4vTMNnAgrJFsqkomH3xjoG_WcZo7ip8MztNOPuHyljpna8nMsb";
+
+        // Envoyer les données au webhook Discord
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload) // Convertir le payload en JSON
+        });
+
+        if (response.ok) {
+          // Afficher un message de succès
+          alert("Message envoyé avec succès sur Discord !");
+          console.log("Webhook Discord réponse :", await response.json());
+
+          // Réinitialiser les champs
+          this.nom = "";
+          this.mail = "";
+          this.message = "";
+        } else {
+          // En cas d'erreur côté serveur Discord
+          alert("Erreur lors de l'envoi du message à Discord.");
+          console.error("Erreur serveur :", response.statusText);
+        }
+      } catch (error) {
+        // Gestion des erreurs réseau
+        alert("Impossible de contacter le serveur Discord.");
+        console.error("Erreur réseau :", error);
+      }
     }
   }
 };
