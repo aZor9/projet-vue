@@ -11,14 +11,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item shadow-sm">
                         <router-link to="/"  class="nav-link" aria-current="page">{{ Texte1 }}</router-link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item shadow-sm">
                         <router-link to="/contact"  class="nav-link" aria-current="page">{{ Texte2 }}</router-link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item shadow-sm">
                         <a class="nav-link" aria-current="page" href="#">{{ Texte3 }}</a>
+                    </li>
+                    <li class="nav-item shadow-sm">
+                        <a class="nav-link" aria-current="page" href="#">{{ Texte4 }}</a>
                     </li>
                 </ul>
             </div>
@@ -32,22 +35,31 @@
         </transition>
       </router-view>
     </main>
+    <!-- <div>
+      <TextImageComponent />
+    </div> -->
   </div>
 </template>
 
 
 <script>
+// import TextImageComponent from './components/TextImageComponent.vue';
 export default {
     data() {
         return {
             Texte1: 'Accueil',
             Texte2: 'Contact',
-            Texte3: 'API'
+            Texte3: 'API',
+            Teste4: '  '
         };
-    }
+    },
+    
+    // name: 'App',
+    //   components: {
+    //     TextImageComponent
+    //   }
 };
 </script>
-
 
 <style>
 #app {
