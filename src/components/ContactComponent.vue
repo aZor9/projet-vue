@@ -90,3 +90,9 @@ export default {
   }
 };
 </script>
+
+
+
+
+https://rapidapi.com/guides/fetch-api-with-vue
+https://discord.com/api/webhooks/1309485318969495572/IHGFgyq3BCa0c4heSp4vTMNnAgrJFsqkomH3xjoG_WcZo7ip8MztNOPuHyljpna8nMsb
