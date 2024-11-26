@@ -3,39 +3,34 @@
     <h1 class="text-center">Contacte-Nous !!</h1>
 
     <div class="container mt-4">
-      
-      
-      <div class="my-2">  
+      <!-- Champ nom -->
+      <div class="my-2">
         <p class="form-label">Nom</p>
         <input v-model="nom" type="text" class="form-control shadow-sm" placeholder="Votre nom" />
+        <div v-if="nomError" style="color: red; font-size: 12px;">Nom invalide (ne doit pas contenir de chiffres)</div>
       </div>
-      
-      <div class="my-2">  
+
+      <!-- Champ e-mail -->
+      <div class="my-2">
         <p class="form-label">Adresse E-mail</p>
-        <input v-model="mail" type="mail" class="form-control shadow-sm" placeholder="Votre E-mail" />
+        <input v-model="mail" type="email" class="form-control shadow-sm" placeholder="Votre E-mail" />
+        <div v-if="emailError" style="color: red; font-size: 12px;">E-mail invalide (doit être au format example@domain.com)</div>
       </div>
 
-      <div class="my-2">  
+      <!-- Champ message -->
+      <div class="my-2">
         <p class="form-label">Message</p>
-        <textarea v-model="message" type="text" class="form-control shadow-sm" placeholder="Votre Message"></textarea>
+        <textarea v-model="message" class="form-control shadow-sm" placeholder="Votre Message"></textarea>
+        <div v-if="messageError" style="color: red; font-size: 12px;">Le message ne peut pas être vide</div>
       </div>
 
+      <!-- Bouton envoyer -->
       <form @submit.prevent="envoyerDonnees">
-          <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Envoyer</button>
+        <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Envoyer</button>
       </form>
     </div>
-
-
-
-
-
-
-
-
-
   </div>
 </template>
-
 
 <script>
 export default {
@@ -44,44 +39,69 @@ export default {
     return {
       nom: "",
       mail: "",
-      message: ""
+      message: "",
+      nomError: false,
+      emailError: false,
+      messageError: false,
     };
   },
   methods: {
-    async envoyerDonnees() {
-      const message = {
-        content: `**Nom :** ${this.nom}\n**E-mail :** ${this.mail}\n**Message :**\n${this.message}`
-      };
+    validateForm() {
+      if (this.nom.trim() === "" || /\d/.test(this.nom)) {
+        this.nomError = true;
+      } else {
+        this.nomError = false;
+      }
 
-      fetch("https://discord.com/api/webhooks/1309485318969495572/IHGFgyq3BCa0c4heSp4vTMNnAgrJFsqkomH3xjoG_WcZo7ip8MztNOPuHyljpna8nMsb", {
-        method: "POST",
-        headers: {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(this.mail.trim())) {
+        this.emailError = true;
+      } else {
+        this.emailError = false;
+      }
+
+      if (this.message.trim() === "") {
+        this.messageError = true;
+      } else {
+        this.messageError = false;
+      }
+
+      return !this.nomError && !this.emailError && !this.messageError;
+    },
+
+    async envoyerDonnees() {
+      if (this.validateForm()) {
+        const message = {
+          content: `**Nom :** ${this.nom}\n**E-mail :** ${this.mail}\n**Message :**\n${this.message}`
+        };
+
+        fetch("https://discord.com/api/webhooks/1309485318969495572/IHGFgyq3BCa0c4heSp4vTMNnAgrJFsqkomH3xjoG_WcZo7ip8MztNOPuHyljpna8nMsb", {
+          method: "POST",
+          headers: {
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+          },
+          body: JSON.stringify({
             embeds: [
-            {
-              title: "Nouveau message reçu",
-              description: message.content,
-              color: 16032781, 
-            }]
-        })
-      }).then(response => {
-        if (response.ok) {
-          console.log("Message envoyé avec succès !");
-        } else {
-          console.error("Erreur lors de l'envoi :", response.statusText);
-        }
-      }).catch(error => {
-        console.error("Erreur réseau :", error);
-      });
+              {
+                title: "Nouveau message reçu",
+                description: message.content,
+                color: 16032781,
+              }
+            ]
+          })
+        }).then(response => {
+          if (response.ok) {
+            console.log("Message envoyé avec succès !");
+          } else {
+            console.error("Erreur lors de l'envoi :", response.statusText);
+          }
+        }).catch(error => {
+          console.error("Erreur réseau :", error);
+        });
+      } else {
+        console.log("Formulaire invalide");
+      }
     },
   },
 };
 </script>
-
-
-
-
-https://rapidapi.com/guides/fetch-api-with-vue
-https://discord.com/api/webhooks/1309485318969495572/IHGFgyq3BCa0c4heSp4vTMNnAgrJFsqkomH3xjoG_WcZo7ip8MztNOPuHyljpna8nMsb
