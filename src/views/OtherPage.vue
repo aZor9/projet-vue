@@ -1,5 +1,18 @@
+
 <template>
-    <div class="shadow rounded w-75 container d-flex flex-column align-items-center my-4 py-4">
-        <h1> VIDE : A FAIRE PLUS TARD</h1>
+    <div>
+
+        <div>
+            <VideComponent />
+        </div>
+        
+        <div>
+            <TestContactComponent />
+        </div>
     </div>
 </template>
+
+<script setup >
+import TestContactComponent from '@/components/TestContactComponent.vue';
+import VideComponent from '@/components/VideComponent.vue';
+</script>
