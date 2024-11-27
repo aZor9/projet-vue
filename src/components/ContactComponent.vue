@@ -82,7 +82,7 @@ export default {
           },
           body: JSON.stringify({
             avatar_url: "https://www.fffuel.co/images/dddepth/dddepth-327.jpg",
-            user_name: "Le receveur de message",
+            username: "Le receveur de message",
             embeds: [
               {
                 title: "Nouveau message reçu",
