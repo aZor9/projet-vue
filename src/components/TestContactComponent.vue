@@ -17,7 +17,7 @@ export default {
   methods: {
     async fetchData() {
       const message = {
-        content: `**Nouveau message reçu :**\n\n**Nom :** ${this.nom}\n**E-mail :** ${this.mail}\n**Message :**\n${this.message}`
+        content: `**VIDE**`
       };
 
       fetch("https://discord.com/api/webhooks/1309485318969495572/IHGFgyq3BCa0c4heSp4vTMNnAgrJFsqkomH3xjoG_WcZo7ip8MztNOPuHyljpna8nMsb", {
@@ -26,6 +26,8 @@ export default {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
+            avatar_url: "https://www.fffuel.co/images/dddepth/dddepth-327.jpg",
+            user_name: "Le receveur de message",
             embeds: [
             {
               title: "Nouveau message reçu",

@@ -81,6 +81,8 @@ export default {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
+            avatar_url: "https://www.fffuel.co/images/dddepth/dddepth-327.jpg",
+            user_name: "Le receveur de message",
             embeds: [
               {
                 title: "Nouveau message reçu",
