@@ -1,8 +1,8 @@
 
 <template>
-    <VideComponent />
+    <ApiComponent />
 </template>
 
 <script setup >
-    import VideComponent from '@/components/VideComponent.vue';
+    import ApiComponent from '@/components/ApiComponent.vue';
 </script>
