@@ -1,5 +1,5 @@
 <template>
- <h1>texte </h1>
+ <!-- <h1>texte </h1> -->
  <div id="api-page" class="mt-4">
     <h1 class="text-center">Contacter une API</h1>
 
@@ -7,22 +7,23 @@
       <!-- Champ URL -->
       <div class="my-2">
         <p class="form-label">URL</p>
+        <p>https://api.themoviedb.org/3/movie/550?api_key=1f54bd990f1cdfb230adb312546d765d</p>
         <input v-model="url" type="text" class="form-control shadow-sm" placeholder="Votre nom" />
-        <!-- <div v-if="urlError" style="color: red; font-size: 12px;">L'URL ne peut pas être vide</div> -->
+        <div v-if="urlError" style="color: red; font-size: 12px;">L'URL ne peut pas être vide</div>
       </div>
 
       <!-- Champ Methode -->
       <div class="my-2">
         <p class="form-label">Adresse Methode</p>
         <input v-model="methode" type="text" class="form-control shadow-sm" placeholder="Votre E-mail" />
-        <!-- <div v-if="methodeError" style="color: red; font-size: 12px;">La méthode ne peut pas être vide</div> -->
+        <div v-if="methodeError" style="color: red; font-size: 12px;">La méthode ne peut pas être vide</div>
       </div>
 
       <!-- Champ parametre -->
       <div class="my-2">
         <p class="form-label">Paramètres</p>
         <textarea v-model="parametre" class="form-control shadow-sm" placeholder="Votre Parametre"></textarea>
-        <!-- <div v-if="parametreError" style="color: red; font-size: 12px;">Le paramètre ne peut pas être vide</div> -->
+        <div v-if="parametreError" style="color: red; font-size: 12px;">Le paramètre ne peut pas être vide</div>
       </div>
 
       <!-- Bouton envoyer -->
@@ -35,116 +36,137 @@
 </template>
 
 <script >
-  
-// let url_api = "https://api.themoviedb.org/3/movie/550?api_key=1f54bd990f1cdfb230adb312546d765d";
-
-// async function afficherFilms() {
-//     try {
-//     const reponse = await fetch(url_api);
-//     console.log("Téléchargement terminé", reponse);
-//   } catch (error) {
-//     console.error(`Erreur lors du téléchargement : ${error.message}`);
-//   }
-
-// }
-
-
-
-// afficherFilms();
-
-
-
-
-
-
 
 
 export default {
-  name: 'ApiComponent',
   data() {
     return {
       url: "",
       methode: "",
       parametre: "",
-    //   nomError: false,
-    //   emailError: false,
-    //   messageError: false,
+      urlError: false,
+      methodeError: false,
+      parametreError: false
     };
   },
   methods: {
-    // validateForm() {
-    //   if (this.nom.trim() === "" || /\d/.test(this.nom)) {
-    //     this.nomError = true;
-    //   } else {
-    //     this.nomError = false;
-    //   }
 
-    //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    //   if (!emailRegex.test(this.mail.trim())) {
-    //     this.emailError = true;
-    //   } else {
-    //     this.emailError = false;
-    //   }
 
-    //   if (this.message.trim() === "") {
-    //     this.messageError = true;
-    //   } else {
-    //     this.messageError = false;
-    //   }
 
-    //   return !this.nomError && !this.emailError && !this.messageError;
-    // },
-    
-    
-    async envoyerDonnees() {
-        if (validateForm) {
-            const message = {
-                content: `**Nom :** ${this.nom}\n**E-mail :** ${this.mail}\n**Message :**\n${this.message}`
-            };
-            
-            fetch("https://discord.com/api/webhooks/1309485318969495572/IHGFgyq3BCa0c4heSp4vTMNnAgrJFsqkomH3xjoG_WcZo7ip8MztNOPuHyljpna8nMsb", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    avatar_url: "https://www.fffuel.co/images/dddepth/dddepth-327.jpg",
-                    username: "Le receveur de message",
-                    embeds: [
-                        {
-                            title: "Nouveau message reçu",
-                            description: message.content,
-                            color: 16032781,
-                        }
-                    ]
-                })
-        }).then(response => {
-            if (response.ok) {
-                console.log("Message envoyé avec succès !");
-            } else {
-                console.error("Erreur lors de l'envoi :", response.statusText);
-            }
-        }).catch(error => {
-            console.error("Erreur réseau :", error);
-        });
-        } else {
-            console.log("Formulaire invalide");
+  validateForm() {
+    // Vérification du champ URL
+    if (this.url.trim() === "" || !/^https?:\/\/.+\..+/.test(this.url)) {
+      this.urlError = true;
+    } else {
+      this.urlError = false;
+    }
+
+    // Vérification du champ Méthode
+    // const validMethods = ["GET", "POST", "PUT", "DELETE", "PATCH"];
+    // if (this.methode.trim() === "" || !validMethods.includes(this.methode.toUpperCase())) {
+      // this.methodeError = true;
+    // } else {
+    //   this.methodeError = false;
+    // }
+
+    // Vérification du champ Paramètres
+    // try {
+    //   if (this.parametre.trim() === "") {
+    //     this.parametreError = true;
+    //   } else {
+    //     JSON.parse(this.parametre); // Teste si c'est un JSON valide
+    //     this.parametreError = false;
+    //   }
+    // } catch {
+    //   this.parametreError = true;
+    // }
+
+    // Retourne true si tous les champs sont valides
+    return !this.urlError && !this.methodeError && !this.parametreError;
+  },
+
+
+
+
+
+
+
+
+
+
+
+    // console.log("Le composant est prêt");
+    async envoyerDonnees(){
+      if (this.validateForm()) {
+        try {
+          const reponse = await fetch(this.url, {
+            method: this.methode,
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: this.parametre
+          });
+          if (reponse.status == 200) {
+            console.log("Message envoyé avec succès !");
+          } else {
+            console.log("Erreur lors de l'envoi !");
+          }
+          console.log("Téléchargement terminé");
+        } catch (error) {
+          console.log("Erreur réseau !");
+          console.error(`Erreur lors du téléchargement : ${error.message}`);
         }
-    },
-},
-};
+      } else {
+        console.log("Erreur dans le formulaire");
+      }
+      
+    }
+  },
+}
+
+// let url_api = "https://api.themoviedb.org/3/movie/550?api_key=1f54bd990f1cdfb230adb312546d765d";
+
+
+/*
+export default {
+  data() {
+    return {
+      url: "",
+      methode: "",
+      parametre: ""
+    //   urlError: false,
+    //   methodeError: false,
+    //   parametreError: false,
+    };
+  },
+  methods: {
+    
+    async afficherFilms(){
+      try {
+        const reponse = await fetch(url_api);
+        console.log("Téléchargement terminé", reponse);
+      } catch (error) {
+        console.error(`Erreur lors du téléchargement : ${error.message}`);
+      }
+      
+    }
+  
+  
+    
+  },
+  mounted: {
+    let url_api = "https://api.themoviedb.org/3/movie/550?api_key=1f54bd990f1cdfb230adb312546d765d";
+    afficherFilms();
+    // console.log("Le composant est prêt");
+  }
+  
+  
 
 
 
 
-let validateForm = true;
 
-
-
-
-
-
-
+*/
 
 
 
