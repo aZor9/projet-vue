@@ -85,7 +85,7 @@ export default {
             username: "Le receveur de message",
             embeds: [
               {
-                title: "Nouveau message reçu",
+                title: "Nouveau message reçu ",
                 description: message.content,
                 color: 16032781,
               }
