@@ -25,7 +25,7 @@
       </div>
 
       <!-- Bouton envoyer -->
-      <form @submit.prevent="envoyerDonnees">
+      <form @submit.prevent="envoyerDonneesContact">
         <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Envoyer</button>
       </form>
     </div>
@@ -46,7 +46,7 @@ export default {
     };
   },
   methods: {
-    validateForm() {
+    validateFormContact() {
       if (this.nom.trim() === "" || /\d/.test(this.nom)) {
         this.nomError = true;
       } else {
@@ -69,8 +69,8 @@ export default {
       return !this.nomError && !this.emailError && !this.messageError;
     },
 
-    async envoyerDonnees() {
-      if (this.validateForm()) {
+    async envoyerDonneesContact() {
+      if (this.validateFormContact()) {
         const message = {
           content: `**Nom :** ${this.nom}\n**E-mail :** ${this.mail}\n**Message :**\n${this.message}`
         };
