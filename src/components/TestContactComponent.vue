@@ -32,8 +32,7 @@ export default {
             {
               title: "Nouveau message reçu",
               description: message.content,
-              color: 16032781, 
-              // timestamp: new Date().toISOString()
+              color: 16032781
             }],
             
         })

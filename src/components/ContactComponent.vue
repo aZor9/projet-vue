@@ -46,6 +46,7 @@ export default {
     };
   },
   methods: {
+    // Validation du formulaire de contact
     validateFormContact() {
       if (this.nom.trim() === "" || /\d/.test(this.nom)) {
         this.nomError = true;
@@ -69,6 +70,7 @@ export default {
       return !this.nomError && !this.emailError && !this.messageError;
     },
 
+    // Envoi des données du formulaire de contact
     async envoyerDonneesContact() {
       if (this.validateFormContact()) {
         const message = {
