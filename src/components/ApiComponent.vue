@@ -17,6 +17,15 @@
         <input v-model="methode" type="text" class="form-control shadow-sm" placeholder="Votre Methode (ex : GET)" />
         <div v-if="methodeError" style="color: red; font-size: 12px;">La méthode doit être "GET", "POST", "PUT" ou "DELETE"</div>
       </div>
+      <p>
+        https://jsonplaceholder.typicode.com/posts
+        
+        {
+          "title" : "Test Title",
+          "body" : "This a test body",
+          "userId" : 123
+        }
+      </p>
 
       <!-- Champ Parametre -->
       <div class="my-2">
@@ -109,6 +118,7 @@
               console.error("Status : ", reponse.status);
             }
             this.resultat = await reponse.json()
+            // this.resultat = JSON.stringify(this.resultat, null, 2);
           } catch (error) {
             console.error(`Erreur lors du téléchargement : ${error.message}`);
           }

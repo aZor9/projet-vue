@@ -25,3 +25,13 @@ npm list vue
 
 ### Lien vers une API de test
 https://api.gouv.fr/documentation/api_data_gouv
+
+
+
+https://jsonplaceholder.typicode.com/posts
+
+{
+    "title" : "Test Title",
+    "body" : "This a test body",
+    "userId" : 123
+}
