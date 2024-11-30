@@ -6,16 +6,16 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
-                      <li class="nav-item border rounded mx-2">
+                      <li class="nav-item border rounded mx-2 my-2 px-2">
                           <router-link to="/"  class="nav-link" aria-current="page">{{ Texte1 }}</router-link>
                       </li>
-                      <li class="nav-item border rounded mx-2">
+                      <li class="nav-item border rounded mx-2 my-2 px-2">
                           <router-link to="/contact"  class="nav-link" aria-current="page">{{ Texte2 }}</router-link>
                       </li>
-                      <li class="nav-item border rounded mx-2">
+                      <li class="nav-item border rounded mx-2 my-2 px-2">
                           <router-link to="/api"  class="nav-link" aria-current="page">{{ Texte3 }}</router-link>
                       </li>
-                      <li class="nav-item border rounded mx-2">
+                      <li class="nav-item border rounded mx-2 my-2 px-2">
                           <router-link to="/other"  class="nav-link" aria-current="page">{{ Texte4 }}</router-link>
                       </li>
                   </ul>
@@ -23,9 +23,9 @@
           </div>
       </nav>
 </template>
-  
-  
-  <script>
+ 
+
+<script>
   export default {
       data() {
           return {
@@ -36,7 +36,6 @@
           };
       }
   };
-  </script>
-  
+</script>
 
-  
+
