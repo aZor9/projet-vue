@@ -41,14 +41,24 @@
     },
     methods: {
       validationTable() {
-        let content = this.inputJSON;3
+        let content = this.inputJSON;
+        let ParentheseOuverte = 0;
         for (let i = 0; i < content.length; i++) {
           if (content[i] === ",") {
-            content = content.replace(",", "<br>");
+            // content = content.replace(",", "<br>");
+            if (ParentheseOuverte != 0) {
+              for (let j = 0; j < ParentheseOuverte; j++) {
+                content = content.replace(",", "<br>&nbsp;");
+              }
+            } else {
+              content = content.replace(",", "<br>");
+            }
           } else if (content[i] === "{") {
-            content = content.replace("{", "<br>&nbsp;");
+            ParentheseOuverte++;
+            // content = content.replace("{", "<br>&nbsp;--");
           } else if (content[i] === "}") {
-            content = content.replace("}", "<br>&nbsp;");
+            ParentheseOuverte--;
+            // content = content.replace("}", "<br>&nbsp;--");
           } else if (content[i] === '"') {
             content = content.replace('"', " ");
           }
