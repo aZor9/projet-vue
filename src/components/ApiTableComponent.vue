@@ -46,9 +46,9 @@
           if (content[i] === ",") {
             content = content.replace(",", "<br>");
           } else if (content[i] === "{") {
-            content = content.replace("{", "<br>");
+            content = content.replace("{", "<br>&nbsp;");
           } else if (content[i] === "}") {
-            content = content.replace("}", "<br>");
+            content = content.replace("}", "<br>&nbsp;");
           } else if (content[i] === '"') {
             content = content.replace('"', " ");
           }
