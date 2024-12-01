@@ -13,11 +13,20 @@
 
       <!-- Champ Methode -->
       <div class="my-2">
-        <p class="form-label">Methode</p>
-        <input v-model="methode" type="text" class="form-control shadow-sm" placeholder="Votre Methode (ex : GET)" />
+        <p class="form-label">Methode (A choisir)</p>
+        <select name="pets" id="pet-select" class="form-select" aria-label="Default select example">
+          <option value="dog">GET</option>
+          <option value="cat">POST</option>
+          <option value="hamster">PULL</option>
+          <option value="parrot">DELETE</option>
+        </select>
         <div v-if="methodeError" style="color: red; font-size: 12px;">La méthode doit être "GET", "POST", "PUT" ou "DELETE"</div>
       </div>
-      <p>
+
+
+
+
+      <p class="d-none">
         https://jsonplaceholder.typicode.com/posts
         
         {
@@ -40,10 +49,12 @@
       </form>
     </div>
 
-    <!-- Champ resultat -->
-    <div class="mx-5 my-5">
-      <p class="form-label">Resultat : </p>
-      <p class="form-control shadow-sm"> {{ resultat }}</p>
+    <div class="container">
+      <!-- Champ resultat -->
+      <div class="mt-5">
+        <p class="form-label">Resultat : </p>
+        <p class="form-control shadow-sm"> {{ resultat }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -117,8 +128,8 @@
             } else {
               console.error("Status : ", reponse.status);
             }
-            this.resultat = await reponse.json()
-            // this.resultat = JSON.stringify(this.resultat, null, 2);
+            this.resultat = JSON.stringify(reponse.json(), null, 2);
+            console.log(typeof this.resultat);
           } catch (error) {
             console.error(`Erreur lors du téléchargement : ${error.message}`);
           }
