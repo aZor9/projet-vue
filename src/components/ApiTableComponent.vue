@@ -1,6 +1,6 @@
 <template>
     <div class="mt-4 mx-5 px-5">
-      <h1 class="text-center">Contacter une API</h1>
+      <h1 class="text-center">Formater un retour API</h1>
   
       <!-- Champ Paramètre -->
       <div class="my-2">
@@ -13,20 +13,18 @@
       </div>
   
       <!-- Bouton envoyer -->
-      <form @submit.prevent="validationTable">
+      <form @submit.prevent="validationTable" class="text-center">
         <button type="submit" class="btn btn-success mt-4 px-4 shadow-sm">Transmettre</button>
       </form>
   
       <!-- Champ résultat -->
       <div class="my-5">
-        <p class="form-label">Résultat :</p>
-        <p class="form-control shadow-sm">{{ rendu }}</p>
+        <p class="form-label" v-if="rendu">Résultat :</p>
+        <!-- <p class="form-control shadow-sm">{{ rendu }}</p> -->
+        <!-- <div class="mb-5 border"></div> -->
       </div>
 
-
-
-      <div id="test" class="mb-5"></div>
-
+      <table id="tableau"></table>
 
     </div>
 </template>
@@ -36,43 +34,93 @@
     data() {
       return {
           inputJSON: "",
-          rendu: ".."
+          rendu: ""
       };
     },
     methods: {
-      validationTable() {
-        let content = this.inputJSON;
-        let ParentheseOuverte = 0;
-        for (let i = 0; i < content.length; i++) {
-          if (content[i] === ",") {
-            // content = content.replace(",", "<br>");
-            if (ParentheseOuverte != 0) {
-              for (let j = 0; j < ParentheseOuverte; j++) {
-                content = content.replace(",", "<br>&nbsp;");
-              }
-            } else {
-              content = content.replace(",", "<br>");
-            }
-          } else if (content[i] === "{") {
-            ParentheseOuverte++;
-            // content = content.replace("{", "<br>&nbsp;--");
-          } else if (content[i] === "}") {
-            ParentheseOuverte--;
-            // content = content.replace("}", "<br>&nbsp;--");
-          } else if (content[i] === '"') {
-            content = content.replace('"', " ");
-          }
+
+      validationTableTest() {
+        let content = this.inputJSON; // JSON attendu comme un tableau d'objets
+    
+        // Vérification pour s'assurer que le JSON est un tableau
+        if (!Array.isArray(content) || content.length === 0) {
+            console.error("Invalid inputJSON: expected a non-empty array.");
+            return;
         }
-        // content = content.replace("{", "\n\n");
-        this.rendu = content;
-        let test = document.getElementById("test");
-        test.innerHTML = content;
-
-
-
-        // https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
-
+    
+        let body = document.getElementById("tableau");
+    
+        // Vérification pour s'assurer que l'élément existe
+        if (!body) {
+            console.error("Element with id 'tableau' not found!");
+            return;
+        }
+    
+        // Suppression de tout tableau existant pour éviter les doublons
+        body.innerHTML = "";
+    
+        // Création de la table et de son corps
+        let tbl = document.createElement("table");
+        let tblBody = document.createElement("tbody");
+    
+        // Ajout d'une ligne d'en-tête avec les clés du premier objet
+        let headerRow = document.createElement("tr");
+        let keys = Object.keys(content[0]); // Suppose que tous les objets ont les mêmes clés
+        keys.forEach((key) => {
+            let headerCell = document.createElement("th");
+            headerCell.textContent = key;
+            headerRow.appendChild(headerCell);
+        });
+        tblBody.appendChild(headerRow);
+    
+        // Ajout des lignes avec les valeurs des objets
+        content.forEach((item) => {
+            let row = document.createElement("tr");
+    
+            keys.forEach((key) => {
+                let cell = document.createElement("td");
+                cell.textContent = item[key] !== undefined ? item[key] : ""; // Gestion des valeurs undefined
+                row.appendChild(cell);
+            });
+    
+            tblBody.appendChild(row);
+        });
+    
+        tbl.appendChild(tblBody);
+        body.appendChild(tbl);
+    
+        // Ajout de styles (par exemple : bordures)
+        tbl.setAttribute("border", "2");
+        tbl.style.width = "100%";
+        tbl.style.borderCollapse = "collapse";
+    },
+    
+    
+    
+      validationTable() {
+      var tbl = document.getElementById("tableau");
+      tbl.innerHTML = "";
+      for (var r = 0; r < 3; r++) {
+        var row = document.createElement("tr");
+        for (var i = 0; i < 5; i++) {
+          var cell = document.createElement("td");
+          cell.className = "py-2 px-3";
+          var cellText = document.createTextNode("Ligne " + (i + 1) + " | Colonne " + (r + 1));
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+          cell.style.border = "1px solid black";
+          
+        }
+        tbl.appendChild(row);
+        row.style.border = "1px solid black";
       }
+      
+      tbl.setAttribute("border", "2");
+      // tbl.className = "border";
     }
-  };
+
+    
+    // https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
+  }
+};
 </script>
