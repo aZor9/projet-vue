@@ -14,11 +14,11 @@
       <!-- Champ Methode -->
       <div class="my-2">
         <p class="form-label">Methode (A choisir)</p>
-        <select name="pets" id="pet-select" class="form-select" aria-label="Default select example">
-          <option value="dog">GET</option>
-          <option value="cat">POST</option>
-          <option value="hamster">PULL</option>
-          <option value="parrot">DELETE</option>
+        <select name="pets" v-model="methode" id="pet-select" class="form-select shadow-sm">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PULL">PULL</option>
+          <option value="DELETE">DELETE</option>
         </select>
         <div v-if="methodeError" style="color: red; font-size: 12px;">La méthode doit être "GET", "POST", "PUT" ou "DELETE"</div>
       </div>
@@ -49,7 +49,7 @@
       </form>
     </div>
 
-    <div class="container">
+    <div class="container" v-if="resultat">
       <!-- Champ resultat -->
       <div class="mt-5">
         <p class="form-label">Resultat : </p>
@@ -66,7 +66,7 @@
         url: "https://www.data.gouv.fr/api/1/datasets/",
         methode: "GET",
         parametre: "",
-        resultat: "..",
+        resultat: "",
         urlError: false,
         methodeError: false,
         parametreError: false
@@ -128,7 +128,8 @@
             } else {
               console.error("Status : ", reponse.status);
             }
-            this.resultat = JSON.stringify(reponse.json(), null, 2);
+            this.resultat = await reponse.json()
+            this.resultat = JSON.stringify(this.resultat, null, 2);
             console.log(typeof this.resultat);
           } catch (error) {
             console.error(`Erreur lors du téléchargement : ${error.message}`);
