@@ -44,7 +44,7 @@
       </div>
 
       <!-- Bouton envoyer -->
-      <form @submit.prevent="envoyerDonnees">
+      <form @submit.prevent="envoyerDonnees" class="text-center">
         <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Transmettre</button>
       </form>
     </div>

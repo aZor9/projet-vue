@@ -10,9 +10,9 @@
             <TestContactComponent />
         </div>
 
-        <div>
+        <!-- <div>
             <ApiTableComponent />
-        </div>
+        </div> -->
 
     </div>
 </template>
@@ -20,5 +20,5 @@
 <script setup >
 import TestContactComponent from '@/components/TestContactComponent.vue';
 import VideComponent from '@/components/VideComponent.vue';
-import ApiTableComponent from '@/components/ApiTableComponent.vue';
+// import ApiTableComponent from '@/components/ApiTableComponent.vue';
 </script>

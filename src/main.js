@@ -5,6 +5,7 @@ import HomePage from './views/HomePage.vue';
 import ContactPage from './views/ContactPage.vue';
 import ApiPage from './views/ApiPage.vue';
 import OtherPage from './views/OtherPage.vue';
+import BonusPage from './views/BonusPage.vue';
 
 Vue.config.productionTip = false;
 
@@ -15,6 +16,7 @@ const routes = [
   { path: '/contact', component: ContactPage },
   { path: '/api', component: ApiPage },
   { path: '/other', component: OtherPage },
+  { path: '/bonus', component: BonusPage },
 ];
 
 const router = new VueRouter({

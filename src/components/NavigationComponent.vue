@@ -16,7 +16,10 @@
                           <router-link to="/api"  class="nav-link" aria-current="page">{{ Texte3 }}</router-link>
                       </li>
                       <li class="nav-item border rounded mx-2 my-2 px-2">
-                          <router-link to="/other"  class="nav-link" aria-current="page">{{ Texte4 }}</router-link>
+                          <router-link to="/bonus"  class="nav-link" aria-current="page">{{ Texte4 }}</router-link>
+                      </li>
+                      <li class="nav-item border rounded mx-2 my-2 px-2">
+                          <router-link to="/other"  class="nav-link" aria-current="page">{{ Texte5 }}</router-link>
                       </li>
                   </ul>
               </div>
@@ -32,7 +35,8 @@
               Texte1: 'Accueil',
               Texte2: 'Contact',
               Texte3: 'API',
-              Texte4: 'Autre'
+              Texte4: 'Bonus',
+              Texte5: 'Autre'
           };
       }
   };

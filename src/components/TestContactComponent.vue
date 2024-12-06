@@ -1,6 +1,6 @@
 <template>
   <div class="text-center mt-5">
-    <button @click="fetchData" class="btn btn-info shadow">Click Me!</button>
+    <button @click="fetchData" class="btn btn-danger shadow">Test contact bot Discord</button>
   </div>
 </template>
 

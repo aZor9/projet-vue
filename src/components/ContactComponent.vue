@@ -25,7 +25,7 @@
       </div>
 
       <!-- Bouton envoyer -->
-      <form @submit.prevent="envoyerDonneesContact">
+      <form @submit.prevent="envoyerDonneesContact" class="text-center">
         <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Envoyer</button>
       </form>
     </div>
