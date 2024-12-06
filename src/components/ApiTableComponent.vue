@@ -13,7 +13,7 @@
       </div>
   
       <!-- Bouton envoyer -->
-      <form @submit.prevent="validationTable" class="text-center">
+      <form @submit.prevent="validationTableTest" class="text-center">
         <button type="submit" class="btn btn-success mt-4 px-4 shadow-sm">Transmettre</button>
       </form>
   
@@ -40,13 +40,23 @@
     methods: {
 
       validationTableTest() {
-        let content = this.inputJSON; // JSON attendu comme un tableau d'objets
+        let content;
+        try {
+          content = JSON.parse(this.inputJSON); // Convertir la chaîne JSON en objet/array
+        } catch (e) {
+          console.error("Invalid JSON input!", e);
+          alert("Veuillez entrer un JSON valide.");
+          return;
+        }
+  
+        
+
     
         // Vérification pour s'assurer que le JSON est un tableau
-        if (!Array.isArray(content) || content.length === 0) {
-            console.error("Invalid inputJSON: expected a non-empty array.");
-            return;
-        }
+        // if (!Array.isArray(content) || content.length === 0) {
+        //     console.error("Invalid inputJSON: expected a non-empty array.");
+        //     return;
+        // }
     
         let body = document.getElementById("tableau");
     
