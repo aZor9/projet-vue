@@ -9,10 +9,8 @@
             <TextImageComponent />
         </div>
   
-  
     </div>
 </template>
-  
   
 <script>
 import TextComponent from '@/components/TextComponent.vue';

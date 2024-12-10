@@ -3,28 +3,24 @@
     <h1 class="text-center">Contacte-Nous !!</h1>
 
     <div class="container mt-4">
-      <!-- Champ nom -->
       <div class="my-2">
         <p class="form-label">Nom</p>
         <input v-model="nom" type="text" class="form-control shadow-sm" placeholder="Votre nom" />
         <div v-if="nomError" style="color: red; font-size: 12px;">Nom invalide (ne doit pas contenir de chiffres)</div>
       </div>
 
-      <!-- Champ e-mail -->
       <div class="my-2">
         <p class="form-label">Adresse E-mail</p>
         <input v-model="mail" type="email" class="form-control shadow-sm" placeholder="Votre E-mail" />
         <div v-if="emailError" style="color: red; font-size: 12px;">E-mail invalide (doit être au format example@domain.com)</div>
       </div>
 
-      <!-- Champ message -->
       <div class="my-2">
         <p class="form-label">Message</p>
         <textarea v-model="message" class="form-control shadow-sm" placeholder="Votre Message"></textarea>
         <div v-if="messageError" style="color: red; font-size: 12px;">Le message ne peut pas être vide</div>
       </div>
 
-      <!-- Bouton envoyer -->
       <form @submit.prevent="envoyerDonneesContact" class="text-center">
         <button type="submit" class="btn btn-primary mt-4 px-4 shadow-sm">Envoyer</button>
       </form>

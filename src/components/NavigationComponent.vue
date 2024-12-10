@@ -18,16 +18,12 @@
                       <li class="nav-item border rounded mx-2 my-2 px-2">
                           <router-link to="/bonus"  class="nav-link" aria-current="page">{{ Texte4 }}</router-link>
                       </li>
-                      <li class="nav-item border rounded mx-2 my-2 px-2">
-                          <router-link to="/other"  class="nav-link" aria-current="page">{{ Texte5 }}</router-link>
-                      </li>
                   </ul>
               </div>
           </div>
       </nav>
 </template>
  
-
 <script>
   export default {
       data() {
@@ -36,7 +32,6 @@
               Texte2: 'Contact',
               Texte3: 'API',
               Texte4: 'Bonus',
-              Texte5: 'Autre'
           };
       }
   };

@@ -17,9 +17,4 @@ function afficherFilms(){
   
 }
 
-
-
-  
-
-
 </script>

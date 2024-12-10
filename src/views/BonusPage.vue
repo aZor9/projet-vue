@@ -7,24 +7,23 @@
                 <ApiTableComponent />
             </template>
             <template v-slot:content-1>
-                <TextComponent />
+                <ApiChuckNorrisComponent />
             </template>
         </AccordeonView>
     </div>
-
 
 </template>
 
 <script >
 import ApiTableComponent from '@/components/ApiTableComponent.vue';
-import TextComponent from '@/components/TextComponent.vue';
 import AccordeonView from './AccordeonView.vue';
+import ApiChuckNorrisComponent from '@/components/ApiChuckNorrisComponent.vue';
 
 export default {
   components: {
     AccordeonView, 
-    TextComponent,
-    ApiTableComponent
+    ApiTableComponent,
+    ApiChuckNorrisComponent
   },
   data() {
     return {

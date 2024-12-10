@@ -5,12 +5,8 @@
             <ContactComponent />
         </div>
 
-
-  
-  
     </div>
 </template>
-  
   
 <script>
 import ContactComponent from '@/components/ContactComponent.vue';
