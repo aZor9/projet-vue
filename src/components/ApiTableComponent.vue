@@ -23,7 +23,7 @@
         <!-- <p class="form-control shadow-sm">{{ rendu }}</p> -->
         <!-- <div class="mb-5 border"></div> -->
       </div>
-
+      
       <table id="tableau"></table>
 
     </div>
@@ -71,6 +71,7 @@
     
         // Création de la table et de son corps
         let tbl = document.createElement("table");
+        tbl.classList.add("table", "table-bordered", "table-striped", "table-hover");
         let tblBody = document.createElement("tbody");
     
         // Ajout d'une ligne d'en-tête avec les clés du premier objet
@@ -79,6 +80,7 @@
         keys.forEach((key) => {
             let headerCell = document.createElement("th");
             headerCell.textContent = key;
+            headerCell.className = "text-center p-2";
             headerRow.appendChild(headerCell);
         });
         tblBody.appendChild(headerRow);
@@ -90,7 +92,15 @@
             keys.forEach((key) => {
                 let cell = document.createElement("td");
                 cell.textContent = item[key] !== undefined ? item[key] : ""; // Gestion des valeurs undefined
-                row.appendChild(cell);
+                cell.className = "text-center p-1"; 
+                if (key == "title") {
+                  // var cell2 = String.prototype.toUpperCase.call(cell);
+                  // row.appendChild(cell2);
+                  cell.textContent = cell.textContent.toUpperCase();
+                  row.appendChild(cell);
+                } else {
+                  row.appendChild(cell);
+                }
             });
     
             tblBody.appendChild(row);
@@ -110,19 +120,23 @@
       validationTable() {
       var tbl = document.getElementById("tableau");
       tbl.innerHTML = "";
+      tbl.className = "table table-bordered table-striped table-hover";
+      tbl.classList.add("table", "table-bordered", "table-striped", "table-hover");
       for (var r = 0; r < 3; r++) {
         var row = document.createElement("tr");
         for (var i = 0; i < 5; i++) {
           var cell = document.createElement("td");
-          cell.className = "py-2 px-3";
+          // cell.className = "py-5 px-5";
+          cell.className = "text-center p-3"; 
+          cell.classList.add("text-center", "p-3");
           var cellText = document.createTextNode("Ligne " + (i + 1) + " | Colonne " + (r + 1));
           cell.appendChild(cellText);
           row.appendChild(cell);
-          cell.style.border = "1px solid black";
+          // cell.style.border = "1px solid black";
           
         }
         tbl.appendChild(row);
-        row.style.border = "1px solid black";
+        // row.style.border = "1px solid black";
       }
       
       tbl.setAttribute("border", "2");
@@ -134,3 +148,31 @@
   }
 };
 </script>
+
+
+
+
+<!-- 
+[
+{
+    "title" : "Test Title",
+    "body" : "This a test body",
+    "userId" : 123
+},
+{
+    "title" : "Test Title 2",
+    "body" : "This a test body 2",
+    "userId" : 456
+},
+{
+    "title" : "Test Title 3",
+    "body" : "This a test body 3",
+    "userId" : 789
+},
+{
+    "title" : "Test Title 4",
+    "body" : "This a test body 4",
+    "userId" : 101112
+}
+] 
+-->
