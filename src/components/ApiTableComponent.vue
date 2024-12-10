@@ -1,10 +1,10 @@
 <template>
     <div class="mt-4 mx-5 px-5">
-      <h1 class="text-center">Formater un retour API</h1>
+      <h1 class="text-center mb-2">Formater un retour API</h1>
   
       <!-- Champ Paramètre -->
       <div class="my-2">
-        <p class="form-label">Paramètres</p>
+        <!-- <p class="form-label">Paramètres</p> -->
         <textarea 
           v-model="inputJSON" 
           class="form-control shadow-sm" 
