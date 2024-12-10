@@ -23,9 +23,6 @@
         <div v-if="methodeError" style="color: red; font-size: 12px;">La méthode doit être "GET", "POST", "PUT" ou "DELETE"</div>
       </div>
 
-
-
-
       <p class="d-none">
         https://jsonplaceholder.typicode.com/posts
         
