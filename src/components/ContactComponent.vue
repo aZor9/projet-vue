@@ -36,6 +36,8 @@ export default {
       nom: "",
       mail: "",
       message: "",
+      avatar_url: "https://www.fffuel.co/images/dddepth/dddepth-327.jpg", // Avatar de du bot discord
+      username: "Le receveur de message", // Nom du bot discord
       nomError: false,
       emailError: false,
       messageError: false,
@@ -79,8 +81,8 @@ export default {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            avatar_url: "https://www.fffuel.co/images/dddepth/dddepth-327.jpg",
-            username: "Le receveur de message",
+            avatar_url: this.avatar_url,
+            username: this.username,
             embeds: [
               {
                 title: "Nouveau message reçu ",
@@ -92,6 +94,10 @@ export default {
         }).then(response => {
           if (response.ok) {
             console.log("Message envoyé avec succès !");
+            alert("Message envoyé");
+            this.nom = "";
+            this.mail = "";
+            this.message = ""; 
           } else {
             console.error("Erreur lors de l'envoi :", response.statusText);
           }

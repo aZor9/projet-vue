@@ -86,7 +86,7 @@
           this.methodeError = false;
         }
 
-        // Vérification du champ Paramètres
+        // Vérification du champ Paramètres (ne fonctionne pas)
         // try {
         //   if (this.parametre.trim() === "") {
         //     this.parametreError = true;

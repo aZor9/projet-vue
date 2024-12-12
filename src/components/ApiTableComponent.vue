@@ -87,36 +87,6 @@
         tbl.style.borderCollapse = "collapse";
     }
 
-    
-    // https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
   }
 };
 </script>
-
-
-
-
-<!-- 
-[
-{
-    "title" : "Test Title",
-    "body" : "This a test body",
-    "userId" : 123
-},
-{
-    "title" : "Test Title 2",
-    "body" : "This a test body 2",
-    "userId" : 456
-},
-{
-    "title" : "Test Title 3",
-    "body" : "This a test body 3",
-    "userId" : 789
-},
-{
-    "title" : "Test Title 4",
-    "body" : "This a test body 4",
-    "userId" : 101112
-}
-] 
--->
